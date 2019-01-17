@@ -22,9 +22,10 @@ const getRecipe = id => {
       "r.name as Recipe",
       "i.name as Ingredient",
       "ri.quantity as Amount",
-      "u.name as unit(s)"
+      "u.name as measurement"
     )
-    .where({ "r.id": id });
+    .where({ "r.id": id })
+    .groupBy("ingredient");
 };
 
 const addRecipe = recipe => {
