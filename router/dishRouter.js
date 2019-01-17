@@ -35,8 +35,9 @@ router.post("/", async (req, res) => {
   } catch (err) {
     if (err.errno === 19) {
       res.status(400).json({ error: "Please make sure to include a name" });
+    } else {
+      res.status(500).json(err);
     }
-    res.status(500).json(err);
   }
 });
 

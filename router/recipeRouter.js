@@ -22,8 +22,9 @@ router.post("/", async (req, res) => {
       res
         .status(400)
         .json({ error: "Please make sure to include a name, dish_id and instructions" });
+    } else {
+      res.status(500).json(err);
     }
-    res.status(500).json(err);
   }
 });
 
