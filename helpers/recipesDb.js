@@ -37,9 +37,16 @@ const updateRecipe = (recipe, id) => {
     .update(recipe);
 };
 
+const deleteRecipe = id => {
+  return db("recipes")
+    .where({ id })
+    .del();
+};
+
 module.exports = {
   getRecipes,
   getRecipe,
   addRecipe,
-  updateRecipe
+  updateRecipe,
+  deleteRecipe
 };
