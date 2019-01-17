@@ -4,7 +4,7 @@ const db = knex(knexConfig.development);
 
 const getRecipes = () => {
   return db("recipes as r").select(
-    "r.id as ID",
+    "r.id as id",
     "r.name as Recipe",
     "r.instructions as HowTo",
     "r.dish_id as DishID"
@@ -24,16 +24,22 @@ const getRecipe = id => {
       "ri.quantity as Amount",
       "u.name as measurement"
     )
-    .where({ "r.id": id })
-    .groupBy("ingredient");
+    .where({ "r.id": id });
 };
 
 const addRecipe = recipe => {
   return db("recipes").insert(recipe);
 };
 
+const updateRecipe = (recipe, id) => {
+  return db("recipes")
+    .where({ id })
+    .update(recipe);
+};
+
 module.exports = {
   getRecipes,
   getRecipe,
-  addRecipe
+  addRecipe,
+  updateRecipe
 };

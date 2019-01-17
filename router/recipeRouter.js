@@ -39,4 +39,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const dish = req.body;
+  try {
+    const updated = await db.updateRecipe(dish, id);
+    if (updated === 0) {
+      res.status(400).json({ error: "A recipe with that id does not exist" });
+    } else {
+      res.status(203).json(updated);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

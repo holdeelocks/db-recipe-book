@@ -17,6 +17,12 @@ const getDish = id => {
     .where({ "d.id": id });
 };
 
+const updateDish = (id, dish) => {
+  return db("recipes")
+    .where({ id })
+    .update(dish);
+};
+
 module.exports = {
   getDishes,
   getDish,
