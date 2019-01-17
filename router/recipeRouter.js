@@ -3,6 +3,17 @@ const db = require("../helpers/recipesDb");
 
 const router = express.Router();
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const recipe = await db.getRecipe(id);
+    res.status(200).json(recipe);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const recipes = await db.getRecipes();
