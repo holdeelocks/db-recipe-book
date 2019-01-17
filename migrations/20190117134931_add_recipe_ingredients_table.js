@@ -3,11 +3,15 @@ exports.up = function(knex, Promise) {
     tbl
       .integer("recipe_id")
       .unsigned()
-      .notNullable();
+      .notNullable()
+      .references("id")
+      .inTable("recipes");
     tbl
       .integer("ingredient_id")
       .unsigned()
-      .notNullable();
+      .notNullable()
+      .references("id")
+      .inTable("ingredients");
     tbl.primary(["ingredient_id", "recipe_id"]);
     tbl
       .integer("quantity")
@@ -16,7 +20,9 @@ exports.up = function(knex, Promise) {
     tbl
       .integer("unit_id")
       .unsigned()
-      .notNullable();
+      .notNullable()
+      .references("id")
+      .inTable("units");
   });
 };
 

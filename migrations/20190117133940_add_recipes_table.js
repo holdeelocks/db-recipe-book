@@ -1,9 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("recipes", function(tbl) {
-    tbl
-      .increments("id")
-      .references("recipe_id")
-      .inTable("recipe_ingredients");
+    tbl.increments("id");
     tbl
       .string("name", 128)
       .notNullable()

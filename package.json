@@ -5,6 +5,9 @@
   "repository": "git@github.com:holdeelocks/db-recipe-book.git",
   "author": "Holden B <holden.bucher.92@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
