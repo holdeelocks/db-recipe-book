@@ -33,4 +33,18 @@ router.delete("/:recipe/:ingredient", async (req, res) => {
   }
 });
 
+router.put("/", async (req, res) => {
+  const update = req.body;
+  try {
+    const success = await db.updateRecipeIngredient(update);
+    if (success === 0) {
+      res.status(404).json({ error: "Please include both ingredient and recipe ids" });
+    } else {
+      res.status(200).json(success);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

@@ -12,7 +12,17 @@ const removeRecipeIngredient = (recipeId, ingredientId) => {
     .del();
 };
 
+const updateRecipeIngredient = update => {
+  return db("recipe_ingredients")
+    .where({
+      recipe_id: update.recipe_id,
+      ingredient_id: update.ingredient_id
+    })
+    .update(update);
+};
+
 module.exports = {
   addRecipeIngredient,
-  removeRecipeIngredient
+  removeRecipeIngredient,
+  updateRecipeIngredient
 };

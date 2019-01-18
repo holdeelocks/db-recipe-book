@@ -11,7 +11,7 @@ server.use(cors());
 server.use(helmet());
 server.use("/api/dishes", dishRouter);
 server.use("/api/recipes", recipeRouter);
-server.use("/api/add/recipe/ingredients", recipeIngredientsRouter);
+server.use("/api/recipe/ingredients", recipeIngredientsRouter);
 
 const port = 5000;
 
